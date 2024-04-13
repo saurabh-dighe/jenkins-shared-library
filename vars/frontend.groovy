@@ -1,10 +1,9 @@
 def lintchecks(){
-    sh "echo performing Lint Checks"
-    // sh "pip3.6 install pylint"
-    // sh "ptlint *.py|| true"
+    sh "echo performing Lint Checks for $COMPONENT"
+    // sh "mvn checkstyle:check|| true"
 }
 
-def call(){
+def call(COMPONENT){
     pipeline { 
         agent {
             label 'ws'

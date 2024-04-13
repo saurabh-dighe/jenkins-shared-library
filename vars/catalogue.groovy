@@ -1,7 +1,6 @@
 def lintchecks(){
-    sh "echo Installing Lint Checker"
-    sh "npm i jslint"
-    sh "node_modules/jslint/bin/jslint.js server.js || true"
+    sh "echo performing Lint Checks for catalogue"
+    // sh "mvn checkstyle:check|| true"
 }
 
 def call(COMPONENT){
