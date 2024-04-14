@@ -1,5 +1,5 @@
 def lintchecks(){
-    sh "echo Installing Lint Checker"
+    sh "echo Performing lintckecks for $COMPONENT"
     sh "npm i jslint"
     sh "node_modules/jslint/bin/jslint.js server.js || true"
 }
@@ -18,8 +18,8 @@ def call(COMPONENT){
                 }
             }
             stage('Static Code Analysis') {
-                steps {
-                    sh "echo performing static checks"
+                script {
+                    common.lintchecks()
                 }
             }
         }
