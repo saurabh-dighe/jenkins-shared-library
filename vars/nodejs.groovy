@@ -18,10 +18,8 @@ def call(COMPONENT){
                 }
             }
             stage('Static Code Analysis'){
-                steps{
-                    {
-                        sh "echo Performing static for $COMPONENT"
-                    }
+                steps {
+                    sh "echo Performing static for $COMPONENT"  
                 }
             }
        }
