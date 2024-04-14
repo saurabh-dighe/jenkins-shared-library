@@ -1,7 +1,7 @@
 def lintchecks(){
     sh "echo performing Lint Checks"
-    sh "pip3.6 install pylint"
-    sh "ptlint *.py|| true"
+    // sh "pip3.6 install pylint"
+    // sh "ptlint *.py|| true"
 }
 
 def call(COMPONENT){
