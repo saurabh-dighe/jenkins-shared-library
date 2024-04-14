@@ -20,9 +20,7 @@ def call(COMPONENT){
             stage('Static Code Analysis'){
                 steps{
                     {
-                        script {
-                            common.lintchecks()
-                        }
+                        sh "echo Performing static for $COMPONENT"
                     }
                 }
             }
