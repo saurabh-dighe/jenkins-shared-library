@@ -16,11 +16,11 @@ def call(COMPONENT){
                     }
                 }
             }
-            stage('Static Code Analysis') {
+            stage('Static Code Analysis'){
                 steps {
-                    sh "echo performing static checks"
+                    sh "echo Performing static code analysis for $COMPONENT"  
                 }
             }
-        }
+       }
     }
 }

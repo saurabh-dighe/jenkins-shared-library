@@ -4,7 +4,7 @@ def lintchecks(){
     // sh "ptlint *.py|| true"
 }
 
-def call(){
+def call(COMPONENT){
     pipeline { 
         agent {
             label 'ws'
@@ -17,11 +17,11 @@ def call(){
                     }
                 }
             }
-            stage('Static Code Analysis') {
+            stage('Static Code Analysis'){
                 steps {
-                    sh "echo performing static checks"
+                    sh "echo Performing static code analysis for $COMPONENT"  
                 }
             }
-        }
+       }
     }
 }
