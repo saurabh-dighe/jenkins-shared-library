@@ -17,11 +17,15 @@ def call(COMPONENT){
                     }
                 }
             }
-            stage('Static Code Analysis') {
-                script {
-                    common.lintchecks()
+            stage('Static Code Analysis'){
+                steps{
+                    {
+                        script {
+                            common.lintchecks()
+                        }
+                    }
                 }
             }
-        }
+       }
     }
 }
