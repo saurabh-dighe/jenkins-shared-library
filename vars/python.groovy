@@ -4,6 +4,12 @@ def lintchecks(){
     // sh "ptlint *.py|| true"
 }
 
+def sonarchecks(){
+    sh "echo Sonar checks started for $COMPONENT"
+    
+    sh "echo Sonar checks started for $COMPONENT"
+}
+
 def call(COMPONENT){
     pipeline { 
         agent {
@@ -19,7 +25,9 @@ def call(COMPONENT){
             }
             stage('Static Code Analysis'){
                 steps {
-                    sh "echo Performing static code analysis for $COMPONENT"  
+                    script {
+                        sonarchecks()
+                    }
                 }
             }
        }
