@@ -8,6 +8,9 @@ def call(COMPONENT){
         agent {
             label 'ws'
         }
+        environment{
+            NEXES_URL= "172.31.19.197"
+        }
         stages {
             stage('Lint Checks') {
                 steps {
