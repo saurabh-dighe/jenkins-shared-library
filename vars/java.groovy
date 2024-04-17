@@ -1,5 +1,5 @@
 def lintchecks(){
-    sh "echo performing Lint Checks for catalogue"
+    sh "echo performing Lint Checks for $COMPONENT"
     // sh "mvn checkstyle:check|| true"
 }
 def sonarchecks(){
