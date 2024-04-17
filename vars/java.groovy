@@ -10,6 +10,7 @@ def call(COMPONENT){
         }
         environment{
             NEXES_URL= "172.31.19.197"
+            SONAR_CRED= credentials('NEXES_CRED')
         }
         stages {
             stage('Lint Checks') {
