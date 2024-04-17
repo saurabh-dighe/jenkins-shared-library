@@ -3,9 +3,6 @@ def lintchecks(){
     // sh "pip3.6 install pylint"
     // sh "ptlint *.py|| true"
 }
-
-
-
 def call(COMPONENT){
     pipeline { 
         agent {
