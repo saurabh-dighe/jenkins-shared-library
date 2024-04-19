@@ -34,7 +34,7 @@ def call(COMPONENT){
                     }
                 }
             }
-            stage('Static Code Analysis'){
+            stage('Get sonar result'){
                 steps {
                     script {
                         common.sonarrusult()
