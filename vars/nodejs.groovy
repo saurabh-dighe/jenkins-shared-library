@@ -26,6 +26,18 @@ def call(COMPONENT){
                         env.ARGS = "-Dsonar.sources=."
                         common.sonarchecks()
                     }
+                }               
+            }
+            stage('Static Code Analysis'){
+                steps {
+                    script {
+                        common.sonarrusult()
+                    }
+                }
+            }
+            stage('Static Code Analysis'){
+                steps{
+                    sh "echo testing"         
                 }
             }
        }

@@ -28,6 +28,18 @@ def call(COMPONENT){
                     }
                 }
             }
+            stage('Static Code Analysis'){
+                steps {
+                    script {
+                        common.sonarrusult()
+                    }
+                }
+            }
+            stage('Static Code Analysis'){
+                steps{
+                    sh "echo testing"         
+                }
+            }
        }
     }
 }
