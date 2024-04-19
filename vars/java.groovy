@@ -41,7 +41,7 @@ def call(COMPONENT){
                     }
                 }
             }
-            stage('Static Code Analysis'){
+            stage('testing'){
                 steps{
                     sh "echo testing"         
                 }
