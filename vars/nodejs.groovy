@@ -35,7 +35,7 @@ def call(COMPONENT){
                     }
                 }
             }
-            stage('testing'){
+            stage('Testing'){
                 steps{
                     sh "echo testing"         
                 }
