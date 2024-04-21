@@ -11,8 +11,8 @@ def sonarrusult(){
 }
 
 def testcases(){
-    stage('Testing') {
-        
+    stage('Common Testing') {
+
         def stages = [:]
 
         stages["Unit Testing"] = {
