@@ -11,36 +11,16 @@ def sonarrusult(){
 }
 
 def testcases(){
-   def stages = [:]
-
-        stages["Unit Testing"] = {
-            echo "Unit testing completed"
-        }
-        stages["Integration Testing"] = {
-            echo "Integration testing completed"
-        }
-        stages["Functional Testing"] = {
-            echo "Functional testing completed"
-        }
-        parallel(stages)
+    
+    def stages = [:]
+    stages["Unit Testing"] = {
+        echo "Unit testing completed"
+    }
+    stages["Integration Testing"] = {
+        echo "Integration testing completed"
+    }
+    stages["Functional Testing"] = {
+        echo "Functional testing completed"
+    }
+    parallel(stages)
 }
-
-                parallel{
-                    stage('Unit Testing'){
-                       steps{
-                            sh "echo Unit testing completed"  
-                            //sh "npm test"       
-                        }
-                    }
-                    stage('Integration Testing'){
-                       steps{
-                            sh "echo Integration testing completed" 
-                            //sh "npm verify"        
-                        }
-                    }
-                    stage('Functional Testing'){
-                       steps{
-                            sh "echo Functional testing completed"         
-                        }
-                    }                                        
-                }
