@@ -11,9 +11,7 @@ def sonarrusult(){
 }
 
 def testcases(){
-    stage('Common Testing') {
-
-        def stages = [:]
+   def stages = [:]
 
         stages["Unit Testing"] = {
             echo "Unit testing completed"
@@ -25,7 +23,6 @@ def testcases(){
             echo "Functional testing completed"
         }
         parallel(stages)
-    }
 }
 
                 parallel{
