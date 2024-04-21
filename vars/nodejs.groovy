@@ -48,7 +48,7 @@ def call(COMPONENT){
                 }
                 steps{
                     sh 'echo prepairing artifacts'
-                    sh 'npm clean install'
+                    sh 'npm clean-install'
                     sh "zip -r $COMPONENT.zip node_modeles server.js"
                 }
             }
