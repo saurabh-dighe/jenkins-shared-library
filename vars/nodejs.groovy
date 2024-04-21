@@ -48,6 +48,7 @@ def call(COMPONENT){
                 }
                 steps{
                     sh 'echo prepairing artifacts'
+                    sh 'npm install'
                 }
             }
             stage('Publishing artifacts'){
