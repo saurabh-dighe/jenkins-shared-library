@@ -36,22 +36,10 @@ def call(COMPONENT){
                 }
             }
             stage('Testing'){
-                parallel{
-                    stage('Unit Testing'){
-                       steps{
-                            sh "echo Unit testing completed"         
-                        }
+                steps{
+                    script{
+                        common.testcases()
                     }
-                    stage('Integration Testing'){
-                       steps{
-                            sh "echo Integration testing completed"         
-                        }
-                    }
-                    stage('Functional Testing'){
-                       steps{
-                            sh "echo Functional testing completed"         
-                        }
-                    }                                        
                 }
             }
        }
