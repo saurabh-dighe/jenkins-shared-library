@@ -35,19 +35,20 @@ def call(COMPONENT){
                     }
                 }
             }
-            stage('Performing testing'){
-                steps{
-                    script{
-                        common.testcases()
-                    }
-                }
-            }
+
             stage('Making artifacts'){
                 // when{
                 //     expression {env.TAG_NAME != null}
                 // }
                 steps{
                     sh 'echo prepairing artifacts'
+                }
+            }
+            stage('Performing testing'){
+                steps{
+                    script{
+                        common.testcases()
+                    }
                 }
             }
             stage('Publishing artifacts'){
