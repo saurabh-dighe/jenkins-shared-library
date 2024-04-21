@@ -42,6 +42,16 @@ def call(COMPONENT){
                     }
                 }
             }
-       }
+            stage('Making artifacts'){
+                steps{
+                    sh 'echo prepairing artifacts'
+                }
+            }
+            stage('Publishing artifacts'){
+                steps{
+                    sh 'echo Publishing artifacts'
+                }
+            } 
+        }           
     }
 }
