@@ -59,7 +59,7 @@ def call(COMPONENT){
                 }
                 steps{
                     sh 'echo Publishing artifacts'
-                    sh 'curl -v -u admin:password --upload-file $COMPONENT.zip http://172.31.22.7:8081/repository/$COMPONENT/$COMPONENT.zip'
+                    sh 'curl -v -u admin:password --upload-file $COMPONENT-$TAG_NAME.zip http://172.31.22.7:8081/repository/$COMPONENT/$COMPONENT.zip'
                 }
             } 
        }
