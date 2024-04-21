@@ -43,9 +43,9 @@ def call(COMPONENT){
                 }
             }
             stage('Making artifacts'){
-                when{
-                    expression {env.TAG_NAME != null}
-                }
+                // when{
+                //     expression {env.TAG_NAME != null}
+                // }
                 steps{
                     sh 'echo prepairing artifacts'
                 }
