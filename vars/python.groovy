@@ -44,7 +44,7 @@ def call(COMPONENT){
                     sh 'echo prepairing artifacts'
                 }
             }
-            stage('Performing testing'){
+            stage('Performing testing for code'){
                 steps{
                     script{
                         common.testcases()
