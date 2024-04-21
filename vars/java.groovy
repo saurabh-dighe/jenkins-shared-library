@@ -47,6 +47,22 @@ def call(COMPONENT){
                         common.testcases()
                     }
                 }
+            } 
+            stage('Making artifacts'){
+                when{
+                    expression {env.TAG_NAME != null}
+                }
+                steps{
+                    sh 'echo prepairing artifacts'
+                }
+            }
+            stage('Publishing artifacts'){
+                when{
+                    expression {env.TAG_NAME != null}
+                }
+                steps{
+                    sh 'echo Publishing artifacts'
+                }
             }          
        }
     }
