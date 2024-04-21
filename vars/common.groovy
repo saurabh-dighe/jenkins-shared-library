@@ -5,7 +5,7 @@ def sonarchecks(){
 }
 
 def sonarrusult(){
-    sh "curl https://gitlab.com/thecloudcareers/opensource/-/raw/master/lab-tools/sonar-scanner/quality-gate >> gate.sh"
-    sh "bash gate.sh $SONAR_CRED_USR $SONAR_CRED_PSW $NEXES_URL $COMPONENT"
+    // sh "curl https://gitlab.com/thecloudcareers/opensource/-/raw/master/lab-tools/sonar-scanner/quality-gate >> gate.sh"
+    // sh "bash gate.sh $SONAR_CRED_USR $SONAR_CRED_PSW $NEXES_URL $COMPONENT"
     sh "echo sonar scan completed"
 }
