@@ -45,12 +45,14 @@ def call(COMPONENT){
                 parallel{
                     stage('Unit Testing'){
                        steps{
-                            sh "echo Unit testing completed"         
+                            sh "echo Unit testing completed"   
+                            //sh "mvn test"      
                         }
                     }
                     stage('Integration Testing'){
                        steps{
-                            sh "echo Integration testing completed"         
+                            sh "echo Integration testing completed" 
+                            //sh "mvn verify"        
                         }
                     }
                     stage('Functional Testing'){
