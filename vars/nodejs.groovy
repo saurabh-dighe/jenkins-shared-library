@@ -11,6 +11,7 @@ def call(COMPONENT){
         environment{
             NEXES_URL= "172.31.19.197"
             SONAR_CRED= credentials('NEXES_CRED')
+            NEXUS_CRED= credentials('NEXES_CRED')
         }
         stages {
             stage('Lint Checks') {
@@ -58,6 +59,7 @@ def call(COMPONENT){
                 }
                 steps{
                     sh 'echo Publishing artifacts'
+                    sh 'curl -v -u env.NEXUS_CRED_USR:env.NEXUS_CRED_PSW --upload-file $COMPONENT.zip http://172.31.22.7:8081/repository/$COMPONENT/'
                 }
             } 
        }
