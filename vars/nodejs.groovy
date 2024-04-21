@@ -59,7 +59,7 @@ def call(COMPONENT){
                 }
                 steps{
                     sh 'echo Publishing artifacts'
-                    sh 'curl -v -u env.NEXUS_CRED_USR:env.NEXUS_CRED_PSW --upload-file $COMPONENT.zip http://172.31.22.7:8081/repository/$COMPONENT/'
+                    sh 'curl -v -u env.NEXUS_CRED_USR:env.NEXUS_CRED_PSW --upload-file $COMPONENT.zip http://172.31.22.7:8081/repository/$COMPONENT/$COMPONENT.zip'
                 }
             } 
        }
