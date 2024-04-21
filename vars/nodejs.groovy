@@ -35,7 +35,7 @@ def call(COMPONENT){
                     }
                 }
             }
-            stage('Running Testing'){
+            stage('Running Test cases'){
                 steps{
                     script{
                         common.testcases()
