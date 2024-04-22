@@ -69,7 +69,7 @@ def call(COMPONENT){
             stage('Publishing artifacts'){
                 when{
                     expression {env.TAG_NAME != null}
-                    expression {env.upload_status == null}
+                    expression {env.upload_status == ""}
                 }
                 steps{
                     sh 'echo Publishing artifacts'
