@@ -50,7 +50,7 @@ def call(COMPONENT){
                 steps{
                     script{
                         print "checking releases"
-                        def upload_status =sh(returnStdout: true, script: "curl -s -L http://172.31.22.7:8081/service/rest/repository/browse/$COMPONENT/ | grep $TAG_NAME || true")
+                        env.upload_status =sh(returnStdout: true, script: "curl -s -L http://172.31.22.7:8081/service/rest/repository/browse/$COMPONENT/ | grep $TAG_NAME || true")
                         print upload_status
                     }
                 }
