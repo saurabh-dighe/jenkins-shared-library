@@ -49,7 +49,7 @@ def call(COMPONENT){
                 }
                 steps{
                     sh 'echo prepairing artifacts'
-                    sh 'npm clean-install'
+                    sh 'npm install'
                     sh 'zip -r $COMPONENT-$TAG_NAME.zip node_modules server.js'
                 }
             }
