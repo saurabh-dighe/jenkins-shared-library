@@ -48,15 +48,12 @@ def call(COMPONENT){
                     expression {env.TAG_NAME != null}
                 }
                 steps{
-                    sh 'echo Hii'
+                    script{
+                        print "checking releases"
+                        def upload_status =sh(returnStdout: true, script: "curl -s -L http://172.31.22.7:8081/service/rest/repository/browse/$COMPONENT/ | grep $TAG_NAME")
+                        print upload_status
+                    }
                 }
-                // steps{
-                //     script{
-                //         print "checking releases"
-                //         def upload_status =sh(returnStdout: true, script: "curl -s -L http://172.31.22.7:8081/service/rest/repository/browse/$COMPONENT/ | grep $TAG_NAME")
-                //         print upload_status
-                //     }
-                // }
             }            
             stage('Making artifacts'){
                 when{
