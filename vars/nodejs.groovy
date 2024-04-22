@@ -43,7 +43,7 @@ def call(COMPONENT){
                     }
                 }
             }
-            stage('Cheking release'){
+            stage('Checking release'){
                 when{
                     expression {env.TAG_NAME != null}
                 }
