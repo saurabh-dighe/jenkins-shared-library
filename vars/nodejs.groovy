@@ -50,7 +50,7 @@ def call(COMPONENT){
                 steps{
                     script{
                         print "checking releases"
-                        env.upload_status =sh(returnStdout: true, script: "curl -s -L http://172.31.22.7:8081/service/rest/repository/browse/$COMPONENT/ | grep $TAG_NAME || true")
+                        env.upload_status = sh(returnStdout: true, script: "curl -s -L http://172.31.22.7:8081/service/rest/repository/browse/$COMPONENT/ | grep $TAG_NAME || true")
                         print upload_status
                     }
                 }
@@ -58,6 +58,7 @@ def call(COMPONENT){
             stage('Making artifacts'){
                 when{
                     expression {env.TAG_NAME != null}
+                    expression {env.upload_status == null}
                 }
                 steps{
                     sh 'echo prepairing artifacts'
@@ -68,6 +69,7 @@ def call(COMPONENT){
             stage('Publishing artifacts'){
                 when{
                     expression {env.TAG_NAME != null}
+                    expression {env.upload_status == null}}
                 }
                 steps{
                     sh 'echo Publishing artifacts'
