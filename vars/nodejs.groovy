@@ -47,6 +47,9 @@ def call(COMPONENT){
                 when{
                     expression {env.TAG_NAME != null}
                 }
+                steps{
+                    sh 'echo Hii'
+                }
                 // steps{
                 //     script{
                 //         print "checking releases"
