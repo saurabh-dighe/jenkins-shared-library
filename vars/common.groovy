@@ -44,6 +44,7 @@ def artifacts(){
         stage('Generate Artifacts'){
             if(env.APPTYPE == "nodejs"){
                 sh "echo prepairing artifacts"
+                sh "pwd"
                 sh "npm install"
                 sh "zip -r ${COMPONENT}-${TAG_NAME}.zip node_modules/ server.js systemd.service"
             }
