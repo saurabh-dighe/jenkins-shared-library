@@ -66,9 +66,11 @@ def artifacts(){
                 sh "zip -r ../${COMPONENT}-${TAG_NAME}.zip *"
             }
         }
-        stage('Publishing Artifacts'){
-            sh "echo Publishing artifacts"
-            sh "curl -f -v -u admin:password --upload-file ${COMPONENT}-${TAG_NAME}.zip http://172.31.22.7:8081/repository/${COMPONENT}/${COMPONENT}-${TAG_NAME}.zip"
+        stage('Publish Artifacts') {
+            withCredentials([usernamePassword(credentialsId: 'SONAR_CRED', passwordVariable: 'NEXUS_PASSWORD', usernameVariable: 'NEXUS_USERNAME')]) {
+                sh "echo Publishing Artifacts"
+                sh "curl -f -v -u ${NEXUS_USERNAME}:${NEXUS_PASSWORD} --upload-file ${COMPONENT}-${TAG_NAME}.zip http://${NEXUS_URL}:8081/repository/${COMPONENT}/${COMPONENT}-${TAG_NAME}.zip"
+            }
         }
     } 
     else{
