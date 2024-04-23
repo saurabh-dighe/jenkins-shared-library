@@ -47,15 +47,16 @@ def artifacts(){
                 sh 'npm install'
                 sh 'zip -r $COMPONENT-$TAG_NAME.zip node_modules server.js'
             }
-            else if(env.APPTYPE == "java"){
+            else if(env.APPTYPE == "maven"){
                 sh 'echo prepairing artifacts'
-                sh 'mvn clean install'
-                sh 'zip -r $COMPONENT-$TAG_NAME.zip node_modules server.js systemd.service'
+                sh 'mvn clean package'
+                sh 'mv target/$COMPONENT-1.0.jar $COMPONENT.jar '
+                sh 'zip -r $COMPONENT-$TAG_NAME.zip $COMPONENT.jar systemd.service'
             }
             else if(env.APPTYPE == "python"){
                 sh 'echo prepairing artifacts'
-                sh 'pip3 install'
-                sh 'zip -r $COMPONENT-$TAG_NAME.zip node_modules server.js'
+                sh 'zip -r $COMPONENT-$TAG_NAME.zip *.py *.ini requirements.txt'
+                sh 'ls -ltr'
             }
         }
         stage('Publishing Artifacts'){
