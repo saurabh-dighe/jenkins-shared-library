@@ -1,10 +1,10 @@
-def lint-checks(){
+def lintchecks(){
     stage('Lint Checks'){
         sh "echo performing Lint Checks for $COMPONENT"
     }
 }
 
-def sonar-checks(){
+def sonarchecks(){
     stage('Static Code Analysis'){
         sh "echo Sonar checks started for $COMPONENT"
         //sh "sonar-scanner -Dsonar.host.url=http://$NEXES_URL:9000 -Dsonar.login=$SONAR_CRED_USR -Dsonar.password=$SONAR_CRED_PSW -Dsonar.projectKey=$COMPONENT $ARGS"
@@ -18,7 +18,7 @@ def sonarrusult(){
     sh "echo sonar scan completed"
 }
 
-def test-cases(){
+def testcases(){
     stage('Running Test Cases'){
         def stages = [:]
         stages["Unit Testing"] = {

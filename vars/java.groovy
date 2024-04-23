@@ -1,10 +1,10 @@
 def call(COMPONENT){
-    common.lint-checks()
-    
-    env.ARGS = "-Dsonar.java.binaries=target/"
-    common.sonar-checks()
+    common.lintchecks()
 
-    common.test-cases()
+    env.ARGS = "-Dsonar.java.binaries=target/"
+    common.sonarchecks()
+
+    common.testcases()
 
     if(env.TAG_NAME != null)
     {
