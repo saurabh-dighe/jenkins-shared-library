@@ -44,7 +44,7 @@ def artifacts(){
         stage('Prepairing Artifacts'){
             if(env.APPTYPE == "nodejs"){
                 sh "echo prepairing artifacts"
-                sh "npm install"
+                sh "npm clean-install"
                 sh "zip -r ${COMPONENT}-${TAG_NAME}.zip node_modules/ server.js systemd.service"
             }
             else if(env.APPTYPE == "maven"){
