@@ -1,63 +1,81 @@
-def lintchecks(){
-    sh "echo performing Lint Checks for $COMPONENT"
-    // sh "mvn checkstyle:check|| true"
-}
+def call(){
+    node{
+        git branch: 'main', url: "https://github.com/saurabh-dighe/${COMPONENT}.git"
+        common.lintchecks()
 
-def call(COMPONENT){
-    pipeline { 
-        agent {
-            label 'ws'
+        env.ARGS = "-Dsonar.sources=."
+        common.sonarchecks()
+
+        common.testcases()
+
+        if(env.TAG_NAME != null)
+        {
+            common.artifacts() 
         }
-        environment{
-            NEXES_URL= "172.31.19.197"
-            SONAR_CRED= credentials('NEXES_CRED')
-        }
-        stages {
-            stage('Lint Checks') {
-                steps {
-                    script {
-                        lintchecks()
-                    }
-                }
-            }
-            stage('Static Code Analysis'){
-                steps {
-                    script {
-                        env.ARGS = "-Dsonar.sources=."
-                        common.sonarchecks()
-                    }
-                }
-            }
-            stage('Get sonar result'){
-                steps {
-                    script {
-                        common.sonarrusult()
-                    }
-                }
-            }
-            stage('Performing testing'){
-                steps{
-                    script{
-                        common.testcases()
-                    }
-                }
-            } 
-            stage('Making artifacts'){
-                when{
-                    expression {env.TAG_NAME != null}
-                }
-                steps{
-                    sh 'echo prepairing artifacts'
-                }
-            }
-            stage('Publishing artifacts'){
-                when{
-                    expression {env.TAG_NAME != null}
-                }
-                steps{
-                    sh 'echo Publishing artifacts'
-                }
-            }      
-       }
     }
 }
+
+
+// def lintchecks(){
+//     sh "echo performing Lint Checks for $COMPONENT"
+//     // sh "mvn checkstyle:check|| true"
+// }
+
+// def call(COMPONENT){
+//     pipeline { 
+//         agent {
+//             label 'ws'
+//         }
+//         environment{
+//             NEXES_URL= "172.31.19.197"
+//             SONAR_CRED= credentials('NEXES_CRED')
+//         }
+//         stages {
+//             stage('Lint Checks') {
+//                 steps {
+//                     script {
+//                         lintchecks()
+//                     }
+//                 }
+//             }
+//             stage('Static Code Analysis'){
+//                 steps {
+//                     script {
+//                         env.ARGS = "-Dsonar.sources=."
+//                         common.sonarchecks()
+//                     }
+//                 }
+//             }
+//             stage('Get sonar result'){
+//                 steps {
+//                     script {
+//                         common.sonarrusult()
+//                     }
+//                 }
+//             }
+//             stage('Performing testing'){
+//                 steps{
+//                     script{
+//                         common.testcases()
+//                     }
+//                 }
+//             } 
+//             stage('Making artifacts'){
+//                 when{
+//                     expression {env.TAG_NAME != null}
+//                 }
+//                 steps{
+//                     sh 'echo prepairing artifacts'
+//                 }
+//             }
+//             stage('Publishing artifacts'){
+//                 when{
+//                     expression {env.TAG_NAME != null}
+//                 }
+//                 steps{
+//                     sh 'echo Publishing artifacts'
+//                 }
+//             }      
+//        }
+//     }
+// }
