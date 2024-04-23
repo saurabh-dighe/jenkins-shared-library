@@ -72,6 +72,6 @@ def artifacts(){
         }
     } 
     else{
-        sh "echo Arifact ${COMOPENT}-${TAG_NAME} already present"
+        sh "echo Arifact ${COMPONENT}-${TAG_NAME} already present"
     }   
 }
