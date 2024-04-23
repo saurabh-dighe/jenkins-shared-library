@@ -1,14 +1,16 @@
 def call(COMPONENT){
-    common.lintchecks()
+    node{
+        common.lintchecks()
 
-    env.ARGS = "-Dsonar.java.binaries=target/"
-    common.sonarchecks()
+        env.ARGS = "-Dsonar.java.binaries=target/"
+        common.sonarchecks()
 
-    common.testcases()
+        common.testcases()
 
-    if(env.TAG_NAME != null)
-    {
-        common.artifacts() 
+        if(env.TAG_NAME != null)
+        {
+            common.artifacts() 
+        }
     }
 }
 
