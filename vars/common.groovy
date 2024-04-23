@@ -55,22 +55,22 @@ def artifacts(){
                 sh "echo Artifacts prepared"
             }
             else if(env.APPTYPE == "python"){
-                sh 'echo prepairing artifacts'
-                sh 'zip -r $COMPONENT-$TAG_NAME.zip *.py *.ini requirements.txt'
-                sh 'ls -ltr'
+                sh "echo preparing artifacts"
+                sh "zip -r ${COMPONENT}-${TAG_NAME}.zip *.py *.ini requirements.txt"
+                sh "ls -ltr"
             }
             else if(env.APPTYPE == "angular"){
-                sh 'echo prepairing artifacts'
-                sh 'cd static/'
-                sh 'zip -r ../$COMPONENT-$TAG_NAME.zip *'
+                sh "echo preparing artifacts"
+                sh "cd static/"
+                sh "zip -r ../$COMPONENT-$TAG_NAME.zip *"
             }
         }
         stage('Publishing Artifacts'){
-            sh 'echo Publishing artifacts'
-            sh 'curl -f -v -u admin:password --upload-file $COMPONENT-$TAG_NAME.zip http://172.31.22.7:8081/repository/$COMPONENT/$COMPONENT-$TAG_NAME.zip'
+            sh "echo Publishing artifacts"
+            sh "curl -f -v -u admin:password --upload-file ${COMPONENT}-${TAG_NAME}.zip http://172.31.22.7:8081/repository/${COMPONENT}/${COMPONENT}-${TAG_NAME}.zip"
         }
     } 
     else{
-        sh "echo Arifact $COMOPENT-$TAG_NAME already present"
+        sh "echo Arifact ${COMOPENT}-${TAG_NAME} already present"
     }   
 }
