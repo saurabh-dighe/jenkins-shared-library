@@ -1,6 +1,7 @@
 def call(COMPONENT){
     common.lint-checks()
     
+    env.ARGS = "-Dsonar.java.binaries=target/"
     common.sonar-checks()
 
     common.test-cases()
