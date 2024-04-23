@@ -43,9 +43,9 @@ def artifacts(){
     if(env.upload_status == ""){
         stage('Prepairing Artifacts'){
             if(env.APPTYPE == "nodejs"){
-                sh 'echo prepairing artifacts'
-                sh 'npm install'
-                sh 'zip -r $COMPONENT-$TAG_NAME.zip node_modules server.js'
+                sh "echo prepairing artifacts"
+                sh "npm install"
+                sh "zip -r ${COMPONENT}-${TAG_NAME}.zip node_modules server.js"
             }
             else if(env.APPTYPE == "maven"){
                 sh "echo Preparing Artifacts"
