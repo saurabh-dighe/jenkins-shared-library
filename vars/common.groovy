@@ -50,7 +50,7 @@ def artifacts(){
             else if(env.APPTYPE == "maven"){
                 sh 'echo prepairing artifacts'
                 sh 'mvn clean package'
-                sh 'mv target/$COMPONENT-1.0.jar $COMPONENT.jar '
+                sh 'mv target/$COMPONENT-1.0.jar $COMPONENT.jar'
                 sh 'zip -r $COMPONENT-$TAG_NAME.zip $COMPONENT.jar systemd.service'
             }
             else if(env.APPTYPE == "python"){
