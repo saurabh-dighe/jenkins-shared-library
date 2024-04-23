@@ -48,7 +48,7 @@ def artifacts(){
                 sh 'zip -r $COMPONENT-$TAG_NAME.zip node_modules server.js'
             }
             else if(env.APPTYPE == "maven"){
-                sh 'echo Preparing Artifacts'
+                sh "echo Preparing Artifacts"
                 sh "mvn clean package"
                 sh "mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar"
                 sh "zip -r ${COMPONENT}-${TAG_NAME}.zip  ${COMPONENT}.jar systemd.service"
