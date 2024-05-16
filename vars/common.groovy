@@ -1,20 +1,20 @@
 def lintchecks(){
     stage('Lint Checks'){
-        sh "echo performing Lint Checks for $COMPONENT"
+        sh "echo performing Lint Checks for ${COMPONENT}"
     }
 }
 
 def sonarchecks(){
     stage('Static Code Analysis'){
-        sh "echo Sonar checks started for $COMPONENT"
+        sh "echo Sonar checks started for ${COMPONENT}"
         //sh "sonar-scanner -Dsonar.host.url=http://$NEXES_URL:9000 -Dsonar.login=$SONAR_CRED_USR -Dsonar.password=$SONAR_CRED_PSW -Dsonar.projectKey=$COMPONENT $ARGS"
-        sh "echo Sonar checks completd for $COMPONENT"
+        sh "echo Sonar checks completd for ${COMPONENT}"
     }
 }
 
 def sonarrusult(){
     // sh "curl https://gitlab.com/thecloudcareers/opensource/-/raw/master/lab-tools/sonar-scanner/quality-gate >> gate.sh"
-    // sh "bash gate.sh $SONAR_CRED_USR $SONAR_CRED_PSW $NEXES_URL $COMPONENT"
+    // sh "bash gate.sh $SONAR_CRED_USR $SONAR_CRED_PSW $NEXES_URL ${COMPONENT}"
     sh "echo sonar scan completed"
 }
 
@@ -36,7 +36,7 @@ def testcases(){
 
 def artifacts(){
     stage('Checking Artifacts on Nexus'){
-        env.upload_status = sh(returnStdout: true, script: "curl -s -L http://172.31.22.7:8081/service/rest/repository/browse/${COMPONENT}/ | grep ${COMPONENT}-${TAG_NAME}.zip || true")
+        env.upload_status = sh(returnStdout: true, script: "curl -s -L http://172.31.4.200:8081/service/rest/repository/browse/${COMPONENT}/ | grep ${COMPONENT}-${TAG_NAME}.zip || true")
         print upload_status
     }
 
