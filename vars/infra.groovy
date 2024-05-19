@@ -19,15 +19,15 @@ def call(){
         }
         stage('Terraform Plan'){
             sh '''
-                pwd
                 cd mutable-infra
-                pwd
                 terraform plan -var APP_VERSION=${APP_VERSION} --var-file env-${ENV}/${ENV}.tfvars
             '''
         }
         stage("Terraform Action"){
-            sh "cd mutable-infra"
-            sh "terraform ${ACTION} -auto-approve -var APP_VERSION=${APP_VERSION} --var-file env-${ENV}/${ENV}.tfvars"
+            sh '''
+                cd mutable-infra
+                terraform ${ACTION} -auto-approve -var APP_VERSION=${APP_VERSION} --var-file env-${ENV}/${ENV}.tfvars
+            '''
         }
     }
 }
