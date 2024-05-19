@@ -2,12 +2,9 @@ def call(){
     node{
         git branch: 'main', url: "https://github.com/saurabh-dighe/${COMPONENT}.git"
         common.lintchecks()
-
         env.ARGS = "-Dsonar.sources=."
         common.sonarchecks()
-
         common.testcases()
-
         if(env.TAG_NAME != null)
         {
             common.artifacts() 
