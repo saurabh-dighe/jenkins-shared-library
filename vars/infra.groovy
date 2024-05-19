@@ -12,6 +12,7 @@ def call(){
         stage('Terraform Init'){
             sh '''
                 cd mutable-infra
+                rm -rf .terraform
                 terrafile -f ./env-${ENV}/Terrafile
                 terraform init --backend-config=env-${ENV}/backend-${ENV}.tfvars
             '''
