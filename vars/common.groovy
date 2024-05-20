@@ -63,7 +63,6 @@ def artifacts(){
             else if(env.APPTYPE == "angular"){
                 sh '''
                     echo preparing artifacts
-                    rm -rf ${COMPONENT}-${TAG_NAME}.zip
                     cd static/
                     zip ../${COMPONENT}-${TAG_NAME}.zip *.html css media js images
                 '''
@@ -72,8 +71,6 @@ def artifacts(){
         stage('Publish Artifacts') {
             withCredentials([usernamePassword(credentialsId: 'NEXES_CRED', passwordVariable: 'NEXUS_PASSWORD', usernameVariable: 'NEXUS_USERNAME')]) {
                 sh "echo Publishing Artifacts"
-                sh "pwd"
-                sh "ls -ltr"
                 sh "curl -f -v -u ${NEXUS_USERNAME}:${NEXUS_PASSWORD} --upload-file ${COMPONENT}-${TAG_NAME}.zip http://${NEXUS_URL}:8081/repository/${COMPONENT}/${COMPONENT}-${TAG_NAME}.zip"
             }
         }
