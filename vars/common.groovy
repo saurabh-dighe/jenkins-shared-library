@@ -64,8 +64,7 @@ def artifacts(){
                 sh '''
                     echo preparing artifacts
                     cd static/
-                    rm -rf forntend-001.zip
-                    zip -r ../${COMPONENT}-${TAG_NAME}.zip *
+                    zip -r ./${COMPONENT}-${TAG_NAME}.zip *
                 '''
             }
         }
