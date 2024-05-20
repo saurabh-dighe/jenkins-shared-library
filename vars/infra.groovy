@@ -30,10 +30,4 @@ def call(){
             '''
         }
     }
-    post {
-        always {
-            cleanWs() 
-            // Additional post-build actions (optional)
-        }
-    }
 }
