@@ -64,7 +64,7 @@ def artifacts(){
                 sh '''
                     echo preparing artifacts
                     cd static/
-                    zip ${COMPONENT}-${TAG_NAME}.zip *
+                    zip ${COMPONENT}-${TAG_NAME}.zip *.html css media js images
                 '''
             }
         }
