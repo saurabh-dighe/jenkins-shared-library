@@ -63,10 +63,10 @@ def artifacts(){
             else if(env.APPTYPE == "angular"){
                 sh '''
                     echo preparing artifacts
+                    pwd
                     cd static/
                     pwd
                     zip -r ${COMPONENT}-${TAG_NAME}.zip *
-                    pwd
                 '''
             }
         }
