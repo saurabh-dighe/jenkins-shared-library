@@ -63,11 +63,9 @@ def artifacts(){
             else if(env.APPTYPE == "angular"){
                 sh '''
                     echo preparing artifacts
-                    cd static/
-                    pwd
-                    ls -ltr
                     rm -rf ${COMPONENT}-${TAG_NAME}.zip
-                    ls -ltr
+                    cd static/
+                    zip ../${COMPONENT}-${TAG_NAME}.zip *.html css media js images
                 '''
             }
         }
