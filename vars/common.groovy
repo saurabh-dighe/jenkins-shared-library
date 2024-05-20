@@ -63,12 +63,9 @@ def artifacts(){
             else if(env.APPTYPE == "angular"){
                 sh '''
                     echo preparing artifacts
-                    pwd
                     cd static/
-                    pwd
-                    ls -ltr
+                    rm -rf forntend-001.zip
                     zip -r ../${COMPONENT}-${TAG_NAME}.zip *
-                    pwd
                 '''
             }
         }
