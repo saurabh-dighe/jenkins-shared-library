@@ -65,7 +65,8 @@ def artifacts(){
                     echo preparing artifacts
                     cd static/
                     pwd
-
+                    ls -ltr
+                    rm -rf ${COMPONENT}-${TAG_NAME}.zip
                     ls -ltr
                 '''
             }
