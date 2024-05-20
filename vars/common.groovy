@@ -66,7 +66,7 @@ def artifacts(){
                     pwd
                     cd static/
                     pwd
-                    zip -r ${COMPONENT}-${TAG_NAME}.zip *
+                    zip -r ../${COMPONENT}-${TAG_NAME}.zip *
                 '''
             }
         }
