@@ -36,7 +36,7 @@ def testcases(){
 
 def artifacts(){
     stage('Checking Artifacts on Nexus'){
-        env.upload_status = sh(returnStdout: true, script: "curl -s -L http://172.31.4.200:8081/service/rest/repository/browse/${COMPONENT}/ | grep ${COMPONENT}-${TAG_NAME}.zip || true")
+        env.upload_status = sh(returnStdout: true, script: "curl -s -L http://${NEXUS_URL}:8081/service/rest/repository/browse/${COMPONENT}/ | grep ${COMPONENT}-${TAG_NAME}.zip || true")
         print upload_status
     }
 
