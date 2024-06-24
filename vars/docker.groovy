@@ -28,7 +28,7 @@ def call(){
             }
             stage('Publish Docker Image') {
                 sh '''
-                    wget https://truststore.pki.rds.amazonaws.com/global/global-bundle.pem"
+                    wget https://truststore.pki.rds.amazonaws.com/global/global-bundle.pem
                     aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 992382386864.dkr.ecr.us-east-1.amazonaws.com
                     docker build -t 992382386864.dkr.ecr.us-east-1.amazonaws.com/${COMPONENT}:${TAG_NAME} .
                     docker push 992382386864.dkr.ecr.us-east-1.amazonaws.com/${COMPONENT}:${TAG_NAME}
