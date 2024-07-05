@@ -7,9 +7,9 @@ def call(){
         // common.testcases()
         if(env.TAG_NAME != null)
         {
-            stage('Generate Docker Image'){
+            stage('Generate Docker Image'){ 
                 if(env.APPTYPE == "nodejs"){
-                    sh "npm install"
+                    sh "npm clean-install"
                 }
                 else if(env.APPTYPE == "maven"){
                     sh "mvn clean package"
