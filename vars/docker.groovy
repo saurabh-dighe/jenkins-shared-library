@@ -9,7 +9,9 @@ def call(){
         {
             stage('Generate Docker Image'){ 
                 if(env.APPTYPE == "nodejs"){
-                    sh "npm clean-install"
+                    sh "pwd"
+                    sh "ls-ltr"
+                    sh "npm install"
                 }
                 else if(env.APPTYPE == "maven"){
                     sh "mvn clean package"
